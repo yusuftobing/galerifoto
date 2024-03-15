@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'db_conn.php';
-// error_reporting(0);
 if (isset ($_SESSION['status']) != 'login') {
      echo "<script> alert('Anda Belum Login') 
      location.href='blog.php';  

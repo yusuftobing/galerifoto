@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'db_conn.php';
-// error_reporting(0);
 if (isset ($_SESSION['status']) != 'login') {
      echo "<script> alert('Anda Belum Login') 
      location.href='blog.php';  
@@ -79,51 +78,51 @@ if (isset ($_SESSION['status']) != 'login') {
                               $dislike = $dislike->rowCount();
                          }
                          ?>
-                         <div class="col p-2 ">
-                              <img src="Assets/img/<?= $row['lokasifile'] ?>" class=" img-fluid rounded-5"
-                                   title="<?= $row['judulfoto'] ?>" style="width:620px;">
-                         </div>
-                         <div class="col-md-7 ini">
-                              <div class="card-body col-12">
-                                   <div class="d-flex justify-content-between ">
+                    <div class="col p-2 ">
+                         <img src="Assets/img/<?= $row['lokasifile'] ?>" class=" img-fluid rounded-5"
+                              title="<?= $row['judulfoto'] ?>" style="width:620px;">
+                    </div>
+                    <div class="col-md-7 ini">
+                         <div class="card-body col-12">
+                              <div class="d-flex justify-content-between ">
 
 
-                                        <a class="btn btn-primary" href="Assets/img/<?= $row['lokasifile'] ?>"
-                                             download="hayoloo" role="button"><i class="bi bi-download"></i></a>
-
-
-
-                                        <div class="like d-flex">
-                                             <a href="php/like.php?t=1&fotoid=<?= $row['fotoid'] ?>"
-                                                  style="text-decoration:none; color:black;"><i
-                                                       class="bi bi-hand-thumbs-up-fill" style="font-size:25px;"></i>
-                                                  <?= $like ?>
-                                             </a>
+                                   <a class="btn btn-primary" href="Assets/img/<?= $row['lokasifile'] ?>"
+                                        download="hayoloo" role="button"><i class="bi bi-download"></i></a>
 
 
 
-                                             &thinsp;
-                                             <a href="php/like.php?t=2&fotoid=<?= $row['fotoid'] ?>"
-                                                  style="text-decoration:none; color:black;"><i
-                                                       class="bi bi-hand-thumbs-down-fill" style="font-size:25px;"></i>
-                                                  <?= $dislike ?>
-                                             </a>
-                                        </div>
+                                   <div class="like d-flex">
+                                        <a href="php/like.php?t=1&fotoid=<?= $row['fotoid'] ?>"
+                                             style="text-decoration:none; color:black;"><i
+                                                  class="bi bi-hand-thumbs-up-fill" style="font-size:25px;"></i>
+                                             <?= $like ?>
+                                        </a>
 
 
-                                   </div>
-                                   <h3 class="card-text p-5">
-                                        <?= $row['judulfoto'] ?>
-                                   </h3>
 
-                                   <div class="mb-3">
-                                        <h5 class="card-text">
-                                             <small class="text-body-secondary">Komentar :</small>
-                                        </h5>
+                                        &thinsp;
+                                        <a href="php/like.php?t=2&fotoid=<?= $row['fotoid'] ?>"
+                                             style="text-decoration:none; color:black;"><i
+                                                  class="bi bi-hand-thumbs-down-fill" style="font-size:25px;"></i>
+                                             <?= $dislike ?>
+                                        </a>
                                    </div>
 
-                                   <div class="row" style="max-height: 250px; overflow: auto; margin-bottom:50px;">
-                                        <?php
+
+                              </div>
+                              <h3 class="card-text p-5">
+                                   <?= $row['judulfoto'] ?>
+                              </h3>
+
+                              <div class="mb-3">
+                                   <h5 class="card-text">
+                                        <small class="text-body-secondary">Komentar :</small>
+                                   </h5>
+                              </div>
+
+                              <div class="row" style="max-height: 250px; overflow: auto; margin-bottom:50px;">
+                                   <?php
                                         $fotoid = $row['fotoid'];
                                         $komentar = "SELECT * FROM komentarfoto INNER JOIN user ON komentarfoto.userid=user.userid WHERE komentarfoto.fotoid='$fotoid'";
                                         $stmt = $conn->prepare($komentar);
@@ -131,41 +130,41 @@ if (isset ($_SESSION['status']) != 'login') {
                                         $users = $stmt->fetchAll();
                                         foreach ($users as $row) {
                                              ?>
-                                             <div class="row">
-                                                  <div class="col-auto">
-                                                       <strong>
+                                   <div class="row">
+                                        <div class="col-auto">
+                                             <strong>
+                                                  <?= $row['username'] ?>
+                                             </strong>
+                                        </div>
+                                        <div class="col p-2">
+                                             <div class="bg-light  py-1">
+                                                  <div class="row">
+                                                       <div class="col">
                                                             <?= $row['username'] ?>
-                                                       </strong>
-                                                  </div>
-                                                  <div class="col p-2">
-                                                       <div class="bg-light  py-1">
-                                                            <div class="row">
-                                                                 <div class="col">
-                                                                      <?= $row['username'] ?>
-                                                                 </div>
-                                                                 <div class="col-auto">
-                                                                      <small class="text-muted">
-                                                                           <?= $row['tanggalkomentar'] ?>
-                                                                      </small>
-                                                                 </div>
-                                                            </div>
-                                                            <div class="mt-2 fw-bold">
-                                                                 <?= $row['isikomentar'] ?>
-                                                            </div>
+                                                       </div>
+                                                       <div class="col-auto">
+                                                            <small class="text-muted">
+                                                                 <?= $row['tanggalkomentar'] ?>
+                                                            </small>
                                                        </div>
                                                   </div>
+                                                  <div class="mt-2 fw-bold">
+                                                       <?= $row['isikomentar'] ?>
+                                                  </div>
                                              </div>
-                                             <br>
-                                        <?php } ?>
+                                        </div>
                                    </div>
-                                   <div class="row">
-                                        <?php
+                                   <br>
+                                   <?php } ?>
+                              </div>
+                              <div class="row">
+                                   <?php
                                         $jumlahkomentar = "SELECT * FROM komentarfoto WHERE fotoid='$fotoid'";
                                         $hitungdata = $conn->query($jumlahkomentar);
                                         $menampilkanjumlahdata = $hitungdata->rowCount();
                                         echo "<h5><strong>$menampilkanjumlahdata komentar</strong></h5>";
                                         ?>
-                                        <?php
+                                   <?php
                                         $userid = $_SESSION['userid'];
                                         $stmt = $conn->prepare("SELECT * FROM   user WHERE userid='$userid'");
                                         $stmt->execute();
@@ -173,31 +172,31 @@ if (isset ($_SESSION['status']) != 'login') {
                                         $users = $stmt->fetchAll();
                                         foreach ($users as $row) {
                                              ?>
-                                             <div class="col-auto">
-                                                  <h5>
-                                                       <?= $row['username'] ?>
-                                                  </h5>
-                                             </div>
-                                             <div class="col ">
-                                                  <form method="POST" action="php/komentar.php">
-                                                       <div class="mb-3">
-                                                            <input type="hidden" name="komentarid">
-                                                            <input type="hidden" value="<?= $_GET['fotoid'] ?>" name="fotoid">
-                                                            <textarea name="isikomentar" class="form-control"
-                                                                 placeholder="Tambahkan Komentar"></textarea>
-
-                                                       </div>
-                                                       <div class="text-end">
-                                                            <button type="submit" name="simpan"
-                                                                 class="btn btn-primary">Kirim</button>
-                                                       </div>
-                                                  </form>
-                                             </div>
-                                        <?php } ?>
+                                   <div class="col-auto">
+                                        <h5>
+                                             <?= $row['username'] ?>
+                                        </h5>
                                    </div>
+                                   <div class="col ">
+                                        <form method="POST" action="php/komentar.php">
+                                             <div class="mb-3">
+                                                  <input type="hidden" name="komentarid">
+                                                  <input type="hidden" value="<?= $_GET['fotoid'] ?>" name="fotoid">
+                                                  <textarea name="isikomentar" class="form-control"
+                                                       placeholder="Tambahkan Komentar"></textarea>
 
+                                             </div>
+                                             <div class="text-end">
+                                                  <button type="submit" name="simpan"
+                                                       class="btn btn-primary">Kirim</button>
+                                             </div>
+                                        </form>
+                                   </div>
+                                   <?php } ?>
                               </div>
+
                          </div>
+                    </div>
                     <?php } ?>
 
                </div>
