@@ -79,58 +79,51 @@ if (isset ($_SESSION['status']) != 'login') {
                               $dislike = $dislike->rowCount();
                          }
                          ?>
-                    <div class="col p-2 ">
-                         <img src="Assets/img/<?= $row['lokasifile'] ?>" class=" img-fluid rounded-5"
-                              title="<?= $row['judulfoto'] ?>" style="width:620px;">
-                    </div>
-                    <div class="col-md-7 ini">
-                         <div class="card-body col-12">
-                              <div class="d-flex justify-content-between ">
+                         <div class="col p-2 ">
+                              <img src="Assets/img/<?= $row['lokasifile'] ?>" class=" img-fluid rounded-5"
+                                   title="<?= $row['judulfoto'] ?>" style="width:620px;">
+                         </div>
+                         <div class="col-md-7 ini">
+                              <div class="card-body col-12">
+                                   <div class="d-flex justify-content-between ">
 
 
-                                   <a class="btn btn-primary" href="Assets/img/<?= $row['lokasifile'] ?>"
-                                        download="hayoloo" role="button"><i class="bi bi-download"></i></a>
+                                        <a class="btn btn-primary" href="Assets/img/<?= $row['lokasifile'] ?>"
+                                             download="hayoloo" role="button"><i class="bi bi-download"></i></a>
 
 
 
-                                   <div class="like d-flex">
-                                        <a href="php/like.php?t=1&fotoid=<?= $row['fotoid'] ?>"
-                                             class="add_style<?= $_GET['fotoid'] ?>" id="click_unlick_like"
-                                             style="text-decoration:none; color:black;" data-type-click="like"
-                                             data-foto_id="<?= $_GET['fotoid'] ?>"><i class="bi bi-hand-thumbs-up-fill"
-                                                  style="font-size:25px;"></i>
-                                             <input id="ch_like<?= $_GET['fotoid'] ?>" type="hidden">
-                                             <?= $like ?>
-                                        </a>
+                                        <div class="like d-flex">
+                                             <a href="php/like.php?t=1&fotoid=<?= $row['fotoid'] ?>"
+                                                  style="text-decoration:none; color:black;"><i
+                                                       class="bi bi-hand-thumbs-up-fill" style="font-size:25px;"></i>
+                                                  <?= $like ?>
+                                             </a>
 
-                                        <!-- <div class="count_like<?= $_GET['fotoid'] ?>">0</div> -->
 
-                                        &thinsp;
-                                        <a href="php/like.php?t=2&fotoid=<?= $row['fotoid'] ?>"
-                                             class="add_styleun<?= $_GET['fotoid'] ?>" id="click_unlick_like"
-                                             style="text-decoration:none; color:black;" data-type-click="unlike"
-                                             data-foto_id="<?= $_GET['fotoid'] ?>"><i
-                                                  class="bi bi-hand-thumbs-down-fill" style="font-size:25px;"></i>
-                                             <input id="ch_unlike<?= $_GET['fotoid'] ?>" type="hidden">
-                                             <?= $dislike ?>
-                                        </a>
-                                        <!-- <div class="count_unlike<?= $_GET['fotoid']; ?>">0</div> -->
+
+                                             &thinsp;
+                                             <a href="php/like.php?t=2&fotoid=<?= $row['fotoid'] ?>"
+                                                  style="text-decoration:none; color:black;"><i
+                                                       class="bi bi-hand-thumbs-down-fill" style="font-size:25px;"></i>
+                                                  <?= $dislike ?>
+                                             </a>
+                                        </div>
+
+
+                                   </div>
+                                   <h3 class="card-text p-5">
+                                        <?= $row['judulfoto'] ?>
+                                   </h3>
+
+                                   <div class="mb-3">
+                                        <h5 class="card-text">
+                                             <small class="text-body-secondary">Komentar :</small>
+                                        </h5>
                                    </div>
 
-
-                              </div>
-                              <h3 class="card-text p-5">
-                                   <?= $row['judulfoto'] ?>
-                              </h3>
-
-                              <div class="mb-3">
-                                   <h5 class="card-text">
-                                        <small class="text-body-secondary">Komentar :</small>
-                                   </h5>
-                              </div>
-
-                              <div class="row" style="max-height: 250px; overflow: auto; margin-bottom:50px;">
-                                   <?php
+                                   <div class="row" style="max-height: 250px; overflow: auto; margin-bottom:50px;">
+                                        <?php
                                         $fotoid = $row['fotoid'];
                                         $komentar = "SELECT * FROM komentarfoto INNER JOIN user ON komentarfoto.userid=user.userid WHERE komentarfoto.fotoid='$fotoid'";
                                         $stmt = $conn->prepare($komentar);
@@ -138,41 +131,41 @@ if (isset ($_SESSION['status']) != 'login') {
                                         $users = $stmt->fetchAll();
                                         foreach ($users as $row) {
                                              ?>
-                                   <div class="row">
-                                        <div class="col-auto">
-                                             <strong>
-                                                  <?= $row['username'] ?>
-                                             </strong>
-                                        </div>
-                                        <div class="col p-2">
-                                             <div class="bg-light  py-1">
-                                                  <div class="row">
-                                                       <div class="col">
+                                             <div class="row">
+                                                  <div class="col-auto">
+                                                       <strong>
                                                             <?= $row['username'] ?>
-                                                       </div>
-                                                       <div class="col-auto">
-                                                            <small class="text-muted">
-                                                                 <?= $row['tanggalkomentar'] ?>
-                                                            </small>
-                                                       </div>
+                                                       </strong>
                                                   </div>
-                                                  <div class="mt-2 fw-bold">
-                                                       <?= $row['isikomentar'] ?>
+                                                  <div class="col p-2">
+                                                       <div class="bg-light  py-1">
+                                                            <div class="row">
+                                                                 <div class="col">
+                                                                      <?= $row['username'] ?>
+                                                                 </div>
+                                                                 <div class="col-auto">
+                                                                      <small class="text-muted">
+                                                                           <?= $row['tanggalkomentar'] ?>
+                                                                      </small>
+                                                                 </div>
+                                                            </div>
+                                                            <div class="mt-2 fw-bold">
+                                                                 <?= $row['isikomentar'] ?>
+                                                            </div>
+                                                       </div>
                                                   </div>
                                              </div>
-                                        </div>
+                                             <br>
+                                        <?php } ?>
                                    </div>
-                                   <br>
-                                   <?php } ?>
-                              </div>
-                              <div class="row">
-                                   <?php
+                                   <div class="row">
+                                        <?php
                                         $jumlahkomentar = "SELECT * FROM komentarfoto WHERE fotoid='$fotoid'";
                                         $hitungdata = $conn->query($jumlahkomentar);
                                         $menampilkanjumlahdata = $hitungdata->rowCount();
                                         echo "<h5><strong>$menampilkanjumlahdata komentar</strong></h5>";
                                         ?>
-                                   <?php
+                                        <?php
                                         $userid = $_SESSION['userid'];
                                         $stmt = $conn->prepare("SELECT * FROM   user WHERE userid='$userid'");
                                         $stmt->execute();
@@ -180,31 +173,31 @@ if (isset ($_SESSION['status']) != 'login') {
                                         $users = $stmt->fetchAll();
                                         foreach ($users as $row) {
                                              ?>
-                                   <div class="col-auto">
-                                        <h5>
-                                             <?= $row['username'] ?>
-                                        </h5>
-                                   </div>
-                                   <div class="col ">
-                                        <form method="POST" action="php/komentar.php">
-                                             <div class="mb-3">
-                                                  <input type="hidden" name="komentarid">
-                                                  <input type="hidden" value="<?= $_GET['fotoid'] ?>" name="fotoid">
-                                                  <textarea name="isikomentar" class="form-control"
-                                                       placeholder="Tambahkan Komentar"></textarea>
+                                             <div class="col-auto">
+                                                  <h5>
+                                                       <?= $row['username'] ?>
+                                                  </h5>
+                                             </div>
+                                             <div class="col ">
+                                                  <form method="POST" action="php/komentar.php">
+                                                       <div class="mb-3">
+                                                            <input type="hidden" name="komentarid">
+                                                            <input type="hidden" value="<?= $_GET['fotoid'] ?>" name="fotoid">
+                                                            <textarea name="isikomentar" class="form-control"
+                                                                 placeholder="Tambahkan Komentar"></textarea>
 
+                                                       </div>
+                                                       <div class="text-end">
+                                                            <button type="submit" name="simpan"
+                                                                 class="btn btn-primary">Kirim</button>
+                                                       </div>
+                                                  </form>
                                              </div>
-                                             <div class="text-end">
-                                                  <button type="submit" name="simpan"
-                                                       class="btn btn-primary">Kirim</button>
-                                             </div>
-                                        </form>
+                                        <?php } ?>
                                    </div>
-                                   <?php } ?>
+
                               </div>
-
                          </div>
-                    </div>
                     <?php } ?>
 
                </div>
@@ -216,63 +209,5 @@ if (isset ($_SESSION['status']) != 'login') {
 
      <script src=" Assets/js/bootstrap.bundle.min.js"></script>
 </body>
-<script type="text/javascript">
-$(document).ready(function() {
-     $(document).on('click', '#click_unlick_like', function() {
-          var type = $(this).data('type-click');
-          var fotoid = $(this).data('foto_id');
-
-          var count_like = parseInt($(".count_like" + fotoid).text());
-          var count_unlike = parseInt($(".count_unlike" + fotoid).text());
-
-          var ch_like = $("#ch_like" + fotoid).val();
-          var ch_unlike = $("#ch_unlike" + fotoid).val();
-
-          function Minus_like() {
-               $(".count_like" + fotoid).text(count_like - 1);
-               $("#ch_like" + fotoid).val("");
-          }
-
-          function Minus_unlike() {
-               $(".count_unlike" + fotoid).text(count_unlike - 1);
-               $("#ch_unlike" + fotoid).val("");
-          }
-
-          if (type == "like") {
-
-               if (ch_unlike == "yes") {
-                    Minus_unlike();
-                    $(".add_styleun" + fotoid).css('color', 'black');
-               }
-
-               if (ch_like == "yes") {
-                    Minus_like();
-                    $(".add_style" + fotoid).css('color', 'black');
-               }
-               if (ch_like == "") {
-                    $(".count_like" + fotoid).text(count_like + 1);
-                    $("#ch_like" + fotoid).val("yes");
-                    $(".add_style" + fotoid).css('color', 'blue');
-               }
-          }
-          if (type == "unlike") {
-               if (ch_like == "yes") {
-                    Minus_like();
-                    $(".add_style" + fotoid).css('color', 'black');
-               }
-
-               if (ch_unlike == "yes") {
-                    Minus_unlike();
-                    $(".add_styleun" + fotoid).css('color', 'black');
-               }
-               if (ch_unlike == "") {
-                    $(".count_unlike" + fotoid).text(count_unlike + 1);
-                    $("#ch_unlike" + fotoid).val("yes");
-                    $(".add_styleun" + fotoid).css('color', 'blue');
-               }
-          }
-     });
-});
-</script>
 
 </html>
