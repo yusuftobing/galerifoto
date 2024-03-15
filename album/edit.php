@@ -21,7 +21,7 @@ if ($_SESSION['status'] != 'login') {
 <body>
      <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <div class="container-fluid">
-               <a class="navbar-brand" href="index.php">
+               <a class="navbar-brand" href="../blog.php">
                     <b>Gallery <span style="color :#0088FF; ">Photo</span></b>
                </a>
                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -54,7 +54,7 @@ if ($_SESSION['status'] != 'login') {
           <div class="row">
                <section class="col-md-12">
                     <?php
-                    if (isset($_SESSION['Message'])): ?>
+                    if (isset ($_SESSION['Message'])): ?>
                          <?php ?>
                          <h5 class="alert alert-success">
                               <?= $_SESSION['Message']; ?>

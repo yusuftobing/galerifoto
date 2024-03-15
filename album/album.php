@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../db_conn.php';
-if (isset($_SESSION['status']) != '$status') {
+if (isset ($_SESSION['status']) != '$status') {
      echo "<script> alert('Anda Belum Login') 
      location.href='../blog.php';
      </script>";
@@ -37,7 +37,7 @@ if (isset($_SESSION['status']) != '$status') {
                               <a class="nav-link active" aria-current="page" href="../foto/foto.php">Foto</a>
                          </li>
                     </ul>
-                    <a class="btn btn-primary" href="../logout.php" type="button">Keluar</a>
+                    <a class="btn btn-primary" href="../logout.php" type="button">Logout</a>
                </div>
           </div>
      </nav>
@@ -45,7 +45,7 @@ if (isset($_SESSION['status']) != '$status') {
      <div class="container" style="margin-top: 15px;">
           <ol class="breadcrumb">
                <li class="breadcrumb-item">
-                    <a href="../blog.php">Home</a>
+                    <a href="../index.php">Home</a>
                </li>
                <li class="breadcrumb-item active">Album</li>
           </ol>
@@ -59,12 +59,12 @@ if (isset($_SESSION['status']) != '$status') {
                <section class="col-md-12">
 
                     <?php
-                    if (isset($_SESSION['Message'])): ?>
-                    <?php ?>
-                    <h5 class="alert alert-success">
-                         <?= $_SESSION['Message']; ?>
-                    </h5>
-                    <?php
+                    if (isset ($_SESSION['Message'])): ?>
+                         <?php ?>
+                         <h5 class="alert alert-success">
+                              <?= $_SESSION['Message']; ?>
+                         </h5>
+                         <?php
                          unset($_SESSION['Message']);
                     endif; ?>
                     <div class="table-responsive">
@@ -92,52 +92,52 @@ if (isset($_SESSION['status']) != '$status') {
                                    if ($result) {
                                         foreach ($result as $row) {
                                              ?>
-                                   <tr>
-                                        <td>
-                                             <center>
-                                                  <?= $row['albumid']; ?>
-                                             </center>
+                                             <tr>
+                                                  <td>
+                                                       <center>
+                                                            <?= $row['albumid']; ?>
+                                                       </center>
 
-                                        </td>
-                                        <td>
-                                             <center>
-                                                  <?= $row['namaalbum']; ?>
-                                             </center>
+                                                  </td>
+                                                  <td>
+                                                       <center>
+                                                            <?= $row['namaalbum']; ?>
+                                                       </center>
 
-                                        </td>
-                                        <td>
-                                             <center>
-                                                  <?= $row['deskripsi']; ?>
-                                             </center>
+                                                  </td>
+                                                  <td>
+                                                       <center>
+                                                            <?= $row['deskripsi']; ?>
+                                                       </center>
 
-                                        </td>
-                                        <td>
-                                             <center>
-                                                  <?= $row['tanggaldibuat']; ?>
-                                             </center>
+                                                  </td>
+                                                  <td>
+                                                       <center>
+                                                            <?= $row['tanggaldibuat']; ?>
+                                                       </center>
 
-                                        </td>
-                                        <td>
-                                             <center>
-                                                  <form action="../php/album.php" method="POST">
-                                                       <a href="edit.php?id=<?= $row['albumid']; ?> &NamaAlbum=<?= $row['namaalbum']; ?>&Deskripsi=<?= $row['deskripsi']; ?> &Albumid=<?= $row['albumid']; ?>"
-                                                            class="btn btn-primary">Edit</a>
+                                                  </td>
+                                                  <td>
+                                                       <center>
+                                                            <form action="../php/album.php" method="POST">
+                                                                 <a href="edit.php?id=<?= $row['albumid']; ?> &NamaAlbum=<?= $row['namaalbum']; ?>&Deskripsi=<?= $row['deskripsi']; ?> &Albumid=<?= $row['albumid']; ?>"
+                                                                      class="btn btn-primary">Edit</a>
 
-                                                       <button type="submit" name="delete"
-                                                            value="<?= $row['albumid']; ?>"
-                                                            class="btn btn-danger">Delete</button>
-                                                  </form>
-                                             </center>
-                                        </td>
-                                   </tr>
-                                   <?php
+                                                                 <button type="submit" name="delete"
+                                                                      value="<?= $row['albumid']; ?>"
+                                                                      class="btn btn-danger">Delete</button>
+                                                            </form>
+                                                       </center>
+                                                  </td>
+                                             </tr>
+                                             <?php
                                         }
                                    } else {
                                         ?>
-                                   <tr>
-                                        <td colspan="5">No Record Found</td>
-                                   </tr>
-                                   <?php
+                                        <tr>
+                                             <td colspan="5">No Record Found</td>
+                                        </tr>
+                                        <?php
                                    }
 
                                    ?>

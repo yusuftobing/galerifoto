@@ -2,7 +2,7 @@
 session_start();
 include 'db_conn.php';
 // error_reporting(0);
-if (isset($_SESSION['status']) != 'login') {
+if (isset ($_SESSION['status']) != 'login') {
      echo "<script> alert('Anda Belum Login') 
      location.href='blog.php';  
      </script>";
@@ -34,7 +34,7 @@ if (isset($_SESSION['status']) != 'login') {
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                          <li class="nav-item">
-                              <a class="nav-link active" aria-current="page" href="index.php">Berandan</a>
+                              <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                          </li>
                          <li class="nav-item">
                               <a class="nav-link" href="foto/foto.php">Upload</a>
@@ -43,7 +43,10 @@ if (isset($_SESSION['status']) != 'login') {
                               <a class="nav-link" href="album/album.php">Album</a>
                          </li>
                          <li class="nav-item">
-                              <a class="nav-link " href="login.php">Login | Signup</a>
+                              <a class="nav-link " href="login.php">Login | Register</a>
+                         </li>
+                         <li class="nav-item">
+                              <a class="nav-link " href="logout.php">Logout</a>
                          </li>
                     </ul>
                     <form class=" d-flex" role="search">

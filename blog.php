@@ -28,7 +28,7 @@ include 'db_conn.php';
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                          <li class="nav-item">
-                              <a class="nav-link active" aria-current="page" href="index.php">Berandan</a>
+                              <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                          </li>
                          <li class="nav-item">
                               <a class="nav-link" href="foto/foto.php">Upload</a>
@@ -37,7 +37,10 @@ include 'db_conn.php';
                               <a class="nav-link" href="album/album.php">Album</a>
                          </li>
                          <li class="nav-item">
-                              <a class="nav-link " href="login.php">Login | Signup</a>
+                              <a class="nav-link " href="login.php">Login | Register</a>
+                         </li>
+                         <li class="nav-item">
+                              <a class="nav-link " href="logout.php">Logout</a>
                          </li>
                     </ul>
                     <form class=" d-flex" role="search">
@@ -56,22 +59,22 @@ include 'db_conn.php';
                $users = $stmt->fetchAll();
                foreach ($users as $row) {
                     ?>
-                    <div class="img">
+               <div class="img">
+                    <a href="tampilberanda.php?fotoid=<?= $row['fotoid'] ?>">
+                         <img src="Assets/img/<?= $row['lokasifile'] ?>" title="<?= $row['judulfoto'] ?>"
+                              style="width:300px">
+                    </a>
+                    <div class="yee">
                          <a href="tampilberanda.php?fotoid=<?= $row['fotoid'] ?>">
-                              <img src="Assets/img/<?= $row['lokasifile'] ?>" title="<?= $row['judulfoto'] ?>"
-                                   style="width:300px">
+                              <?= $row['judulfoto'] ?>
                          </a>
-                         <div class="yee">
+                         <div class="username">
                               <a href="tampilberanda.php?fotoid=<?= $row['fotoid'] ?>">
-                                   <?= $row['judulfoto'] ?>
+                                   <?= $row['username'] ?>
                               </a>
-                              <div class="username">
-                                   <a href="tampilberanda.php?fotoid=<?= $row['fotoid'] ?>">
-                                        <?= $row['username'] ?>
-                                   </a>
-                              </div>
                          </div>
                     </div>
+               </div>
 
 
                <?php } ?>

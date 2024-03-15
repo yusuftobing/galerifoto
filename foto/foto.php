@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../db_conn.php';
-if (isset($_SESSION['status']) != '$status') {
+if (isset ($_SESSION['status']) != '$status') {
      echo "<script> alert('Anda Belum Login') 
      location.href='../blog.php';
      </script>";
@@ -43,7 +43,7 @@ $statement->execute(); ?>
                               <a class="nav-link active" aria-current="page" href="../album/album.php">Album</a>
                          </li>
                     </ul>
-                    <a class="btn btn-primary" href="../logout.php" type="button">Keluar</a>
+                    <a class="btn btn-primary" href="../logout.php" type="button">Logout</a>
                </div>
           </div>
      </nav>
@@ -51,7 +51,7 @@ $statement->execute(); ?>
      <div class="container" style="margin-top: 15px;">
           <ol class="breadcrumb">
                <li class="breadcrumb-item">
-                    <a href="../blog.php">Home</a>
+                    <a href="../index.php">Home</a>
                </li>
                <li class="breadcrumb-item active">Foto</li>
           </ol>
@@ -65,7 +65,7 @@ $statement->execute(); ?>
                <section class="col-md-12">
 
                     <?php
-                    if (isset($_SESSION['Message'])): ?>
+                    if (isset ($_SESSION['Message'])): ?>
                          <?php ?>
                          <h5 class="alert alert-success">
                               <?= $_SESSION['Message']; ?>
