@@ -10,32 +10,32 @@
 </head>
 
 <body>
-     <div class="d-flex justify-content-center align-items-center vh-100">
+     <div class="d-flex justify-content-center align-items-center vh-100 opacity-100 ">
 
           <form class="shadow w-450 p-3" action="php/login.php" method="post">
 
                <h4 class="display-4  fs-1">LOGIN</h4><br>
                <?php if (isset ($_GET['error'])) { ?>
-                    <div class="alert alert-danger" role="alert">
-                         <?php echo $_GET['error']; ?>
-                    </div>
+               <div class="alert alert-danger" role="alert">
+                    <?php echo $_GET['error']; ?>
+               </div>
                <?php } ?>
 
                <div class="mb-3">
                     <label class="form-label">Username</label>
-                    <input type="text" class="form-control" name="uname"
+                    <input type="text" class="form-control" name="uname" style="width:400px;"
                          value="<?php echo (isset ($_GET['uname'])) ? $_GET['uname'] : "" ?>">
                </div>
 
                <div class="mb-3">
                     <label class="form-label">Password</label>
-                    <input type="password" class="form-control" name="pass">
+                    <input type="password" class="form-control" name="pass" style="width:400px;">
                </div>
 
                <button type="submit" class="btn btn-primary">Login</button>
                <a href="signup.php" class="link-secondary">Register</a>
                &ensp;
-               <a href="blog.php" class="link-secondary">Home</a>
+               <a href="index.php" class="link-secondary">Home</a>
                &ensp;
                <a class="link-secondary" href="logout.php">Logout</a>
           </form>

@@ -3,7 +3,7 @@ session_start();
 include "../db_conn.php";
 
 // delete
-if (isset($_POST['delete'])) {
+if (isset ($_POST['delete'])) {
 
      $albumid = $_POST['delete'];
 
@@ -19,13 +19,13 @@ if (isset($_POST['delete'])) {
           if ($query_execute) {
                $_SESSION['Message'] = "Delete Data Berhasil";
                header('Location: ../album/album.php');
-               exit(0);
+               exit (0);
 
           } else {
                $_SESSION['Message'] = "Delete Data Gagal";
                header('Location: ../album/album.php');
 
-               exit(0);
+               exit (0);
           }
 
      } catch (PDOException $e) {
@@ -37,7 +37,7 @@ if (isset($_POST['delete'])) {
 
 
 // Update
-if (isset($_POST['update'])) {
+if (isset ($_POST['update'])) {
      $albumid = $_POST['albumid'];
      $namaalbum = $_POST['namaalbum'];
      $deskripsi = $_POST['deskripsi'];
@@ -58,13 +58,13 @@ if (isset($_POST['update'])) {
 
           if ($query_execute) {
                $_SESSION['Message'] = "Update Data Berhasil";
-               header('Location: ../album/buatalbum.php');
+               header('Location: ../album/album.php');
 
           } else {
                $_SESSION['Message'] = "Update Data Gagal";
-               header('Location: ../album/buatalbum.php');
+               header('Location: ../album/album.php');
 
-               exit(0);
+               exit (0);
           }
 
      } catch (PDOException $e) {
@@ -75,7 +75,7 @@ if (isset($_POST['update'])) {
 
 
 // simpan
-if (isset($_POST['simpan'])) {
+if (isset ($_POST['simpan'])) {
      $namaalbum = $_POST['namaalbum'];
      $deskripsi = $_POST['deskripsi'];
      $tanggal = date('Y-m-d');
@@ -95,13 +95,13 @@ if (isset($_POST['simpan'])) {
 
      if ($query_execute) {
           $_SESSION['Message'] = "Input Data Berhasil";
-          header('Location: ../album/buatalbum.php');
+          header('Location: ../album/album.php');
 
      } else {
           $_SESSION['Message'] = "Input Data Gagal";
-          header('Location: ../album/buatalbum.php');
+          header('Location: ../album/album.php');
 
-          exit(0);
+          exit (0);
      }
 }
 // end simpan

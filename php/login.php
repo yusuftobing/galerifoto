@@ -1,8 +1,8 @@
 <?php
 session_start();
 if (
-   isset($_POST['uname']) &&
-   isset($_POST['pass'])
+   isset ($_POST['uname']) &&
+   isset ($_POST['pass'])
 ) {
 
    include "../db_conn.php";
@@ -12,12 +12,12 @@ if (
 
    $data = "uname=" . $uname;
 
-   if (empty($uname)) {
-      $em = "User name is required";
+   if (empty ($uname)) {
+      $em = "Nama Dibutuhkan";
       header("Location: ../login.php?error=$em&$data");
       exit;
-   } else if (empty($pass)) {
-      $em = "Password is required";
+   } else if (empty ($pass)) {
+      $em = "Katasandi Dibutuhkan";
       header("Location: ../login.php?error=$em&$data");
       exit;
    } else {
@@ -37,26 +37,26 @@ if (
                $_SESSION['userid'] = $userid;
                $_SESSION['namalengkap'] = $nlengkap;
                $_SESSION['status'] = 'login';
-               echo "<script>
-               alert('Anda Berhasil Login');
-                 location.href='../blog.php';
-               exit;
-               </script>";
+               echo "<script> 
+		alert('Login Berhasil');
+		location.href='../dasboard.php';
+		exit;
+		</script>";
 
             } else {
-               $em = "Incorect User name or password";
+               $em = "Login Gagal";
                header("Location: ../login.php?error=$em&$data");
                exit;
             }
 
          } else {
-            $em = "Incorect User name or password";
+            $em = "Nama pengguna atau kata sandi salah";
             header("Location: ../login.php?error=$em&$data");
             exit;
          }
 
       } else {
-         $em = "Incorect User name or password";
+         $em = "Nama pengguna atau kata sandi salah";
          header("Location: ../login.php?error=$em&$data");
          exit;
       }

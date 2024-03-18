@@ -71,11 +71,11 @@ if (isset ($_POST['update'])) {
 
                if ($query_execute) {
                     $_SESSION['Message'] = "Update Data Berhasil";
-                    header('Location: ../foto/edit.php');
+                    header('Location: ../foto/foto.php');
 
                } else {
                     $_SESSION['Message'] = "Update Data Gagal";
-                    header('Location: ../foto/edit.php');
+                    header('Location: ../foto/foto.php');
 
                     exit (0);
                }

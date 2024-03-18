@@ -21,7 +21,7 @@ if ($_SESSION['status'] != 'login') {
 <body>
      <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <div class="container-fluid">
-               <a class="navbar-brand" href="../blog.php">
+               <a class="navbar-brand" href="../index.php">
                     <b>Gallery <span style="color :#0088FF; ">Photo</span></b>
                </a>
                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

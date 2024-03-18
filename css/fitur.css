@@ -1,0 +1,19 @@
+.navbar .fitur .collapse a {
+  position: relative;
+}
+.navbar .fitur .collapse a:after {
+  content: "";
+  position: absolute;
+  background-color: #0088ff;
+  height: 4px;
+  width: 0;
+  left: 0;
+  bottom: -1px;
+  transition: 0.3s;
+}
+.navbar .fitur .collapse a:hover {
+  color: #0088ff;
+}
+.navbar .fitur .collapse a:hover:after {
+  width: 100%;
+}

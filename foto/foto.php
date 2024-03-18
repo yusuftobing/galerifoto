@@ -3,7 +3,7 @@ session_start();
 include '../db_conn.php';
 if (isset ($_SESSION['status']) != '$status') {
      echo "<script> alert('Anda Belum Login') 
-     location.href='../blog.php';
+     location.href='../index.php';
      </script>";
 } ?>
 
@@ -26,7 +26,7 @@ $statement->execute(); ?>
 <body>
      <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <div class="container-fluid">
-               <a class="navbar-brand" href="../blog.php">
+               <a class="navbar-brand" href="../index.php">
                     <b>Gallery <span style="color :#0088FF; ">Photo</span></b>
                </a>
                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -51,7 +51,7 @@ $statement->execute(); ?>
      <div class="container" style="margin-top: 15px;">
           <ol class="breadcrumb">
                <li class="breadcrumb-item">
-                    <a href="../index.php">Home</a>
+                    <a href="../dasboard.php">Home</a>
                </li>
                <li class="breadcrumb-item active">Foto</li>
           </ol>
