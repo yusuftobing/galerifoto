@@ -28,24 +28,24 @@ include 'db_conn.php';
                     <span class="navbar-toggler-icon"></span>
                </button>
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                         <li class="nav-item">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 satu">
+                         <li class="nav-item dua">
                               <a class="nav-link active" aria-current="page" href="dasboard.php">Dashboard</a>
                          </li>
-                         <li class="nav-item">
+                         <li class="nav-item dua">
                               <a class="nav-link" href="foto/foto.php">Upload</a>
                          </li>
-                         <li class="nav-item">
+                         <li class="nav-item dua">
                               <a class="nav-link" href="album/album.php">Album</a>
                          </li>
-                         <li class="nav-item">
+                         <li class="nav-item dua">
                               <a class="nav-link " href="login.php">Login | Register</a>
                          </li>
-                         <li class="nav-item">
+                         <li class="nav-item dua">
                               <a class="nav-link " href="logout.php">Logout</a>
                          </li>
                     </ul>
-                    <div class="nav-item d-flex ">
+                    <div class="nav-item d-flex tiga">
                          <a class="nav-link" href="editprofil.php" style="font-size:30px;"><i
                                    class="bi bi-person-circle"></i>
                          </a>
@@ -61,19 +61,21 @@ include 'db_conn.php';
                $stmt->execute();
                $users = $stmt->fetchAll();
                foreach ($users as $row) {
+                    unset($_GET['image']);
+                    $url = http_build_query($_GET);
                     ?>
                     <div class="img">
-                         <a href="tampilberanda.php?fotoid=<?= $row['fotoid'] ?>">
+                         <a href="tampilberanda.php?fotoid=<?= $row['fotoid']; ?>">
                               <img src="Assets/img/<?= $row['lokasifile'] ?>" title="<?= $row['judulfoto'] ?>"
                                    style="width:300px">
                          </a>
                          <div class="yee">
-                              <a href="tampilberanda.php?fotoid=<?= $row['fotoid'] ?>">
+                              <a href="tampilberanda.php?fotoid=<?= $row['fotoid']; ?>">
                                    <?= $row['judulfoto'] ?>
                               </a>
                               <div class="username">
-                                   <a href="tampilberanda.php?fotoid=<?= $row['fotoid'] ?>">
-                                        <img src="image_profil/<?= $row['image'] ?>" class=" rounded-circle"
+                                   <a href="tampilberanda.php?fotoid=<?= $row['fotoid']; ?>">
+                                        <img src=" image_profil/<?= $row['image'] ?>" class=" rounded-circle"
                                              style="width:30px;">
                                         <?= $row['username'] ?>
                                    </a>

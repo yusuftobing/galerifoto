@@ -15,6 +15,7 @@ if (isset ($_SESSION['status']) != 'login') {
      <title>Home Page</title>
      <link rel="stylesheet" href="Assets/css/bootstrap.min.css">
      <link rel="stylesheet" href="Assets/css/tampildata.css">
+     <link rel="stylesheet" href="css/fitur.css">
      <link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.min.css">
      <script src="jquery-3.7.1.min.js"></script>
      <script src="fe459689b4.js"></script>
@@ -22,7 +23,7 @@ if (isset ($_SESSION['status']) != 'login') {
 
 <body>
      <nav class="navbar navbar-expand-xxl bg-body-tertiary fixed-top">
-          <div class="container-fluid">
+          <div class="container-fluid fitur">
                <a class="navbar-brand" href="index.php">
 
                     <b>Gallery <span style="color :#0088FF; ">Photo</span></b>
@@ -33,17 +34,17 @@ if (isset ($_SESSION['status']) != 'login') {
                     <span class="navbar-toggler-icon"></span>
                </button>
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                         <li class="nav-item">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 satu">
+                         <li class="nav-item dua">
                               <a class="nav-link active" aria-current="page" href="dasboard.php">Dashboard</a>
                          </li>
-                         <li class="nav-item">
+                         <li class="nav-item dua">
                               <a class="nav-link" href="foto/foto.php">Upload</a>
                          </li>
-                         <li class="nav-item">
+                         <li class="nav-item dua">
                               <a class="nav-link" href="album/album.php">Album</a>
                          </li>
-                         <li class="nav-item">
+                         <li class="nav-item dua">
                               <a class="nav-link " href="login.php">Login | Signup</a>
                          </li>
                     </ul>
@@ -83,19 +84,19 @@ if (isset ($_SESSION['status']) != 'login') {
                                    <div class="d-flex justify-content-between ">
 
                                         <!-- dowload -->
-                                        <a class="btn btn-primary" href="Assets/img/<?= $row['lokasifile'] ?>"
-                                             download="hayolo" role="button"><i class="bi bi-download"></i></a>
+                                        <a class="btn btn-primary mb-5" href="Assets/img/<?= $row['lokasifile'] ?>"
+                                             download="GaleriFoto#By_Yusuf" role="button"><i class="bi bi-download"></i></a>
                                         <!-- end -->
+
                                         <div class="like d-flex">
                                              <a href="php/like.php?t=1&fotoid=<?= $row['fotoid'] ?>"
                                                   style="text-decoration:none; color:black;"><i
-                                                       class="bi bi-hand-thumbs-up-fill" style="font-size:25px;"></i>
+                                                       class="bi bi-hand-thumbs-up-fill" style="font-size:25px; "></i>
                                                   <?= $like ?>
                                              </a>
 
-
-
                                              &thinsp;
+
                                              <a href="php/like.php?t=2&fotoid=<?= $row['fotoid'] ?>"
                                                   style="text-decoration:none; color:black;"><i
                                                        class="bi bi-hand-thumbs-down-fill" style="font-size:25px;"></i>
@@ -105,51 +106,70 @@ if (isset ($_SESSION['status']) != 'login') {
 
 
                                    </div>
-                                   <h3 class="card-text p-5">
+
+                                   <h3 class="card-text py-4">
                                         <?= $row['judulfoto'] ?>
                                    </h3>
+                                   <p class="card-text ">
+                                        <?= $row['deskripsifoto'] ?>
+                                   </p>
+
 
                                    <div class="mb-3">
                                         <h5 class="card-text">
-                                             <small class="text-body-secondary">Komentar :</small>
+                                             <small class="">Komentar :</small>
                                         </h5>
                                    </div>
 
                                    <div class="row" style="max-height: 250px; overflow: auto; margin-bottom:50px;">
                                         <?php
-                                        $fotoid = $row['fotoid'];
+                                        $fotoid = $_GET['fotoid'];
                                         $komentar = "SELECT * FROM komentarfoto INNER JOIN user ON komentarfoto.userid=user.userid WHERE komentarfoto.fotoid='$fotoid'";
                                         $stmt = $conn->prepare($komentar);
                                         $stmt->execute();
                                         $users = $stmt->fetchAll();
-                                        foreach ($users as $row) {
-                                             ?>
-                                             <div class="row">
-                                                  <div class="col-auto">
-                                                       <strong>
-                                                            <img src="image_profil/<?= $row['image'] ?>" class=" rounded-circle"
-                                                                 style="width:40px;">
-                                                       </strong>
-                                                  </div>
-                                                  <div class="col p-2">
-                                                       <div class="bg-light  py-1">
-                                                            <div class="row">
-                                                                 <div class="col">
-                                                                      <?= $row['username'] ?>
+                                        if ($users) {
+                                             foreach ($users as $row) {
+                                                  ?>
+                                                  <div class="row">
+                                                       <div class="col-auto">
+                                                            <strong>
+                                                                 <img src="image_profil/<?= $row['image'] ?>" class=" rounded-circle"
+                                                                      style="width:40px;">
+                                                            </strong>
+                                                       </div>
+                                                       <div class="col p-2">
+                                                            <div class="bg-light  py-1">
+                                                                 <div class="row">
+                                                                      <div class="col d-flex">
+                                                                           <p class="fw-bold">
+                                                                                <?= $row['username'] ?>
+                                                                           </p>
+                                                                           &nbsp;
+                                                                           <p class=" text-body-secondary">
+                                                                                <?= $row['isikomentar'] ?>
+                                                                           </p>
+                                                                      </div>
+                                                                      <div class="col-auto">
+                                                                           <small class="text-muted">
+                                                                                <?= $row['tanggalkomentar'] ?>
+                                                                           </small>
+                                                                      </div>
                                                                  </div>
-                                                                 <div class="col-auto">
-                                                                      <small class="text-muted">
-                                                                           <?= $row['tanggalkomentar'] ?>
-                                                                      </small>
-                                                                 </div>
-                                                            </div>
-                                                            <div class="mt-2 fw-bold">
-                                                                 <?= $row['isikomentar'] ?>
                                                             </div>
                                                        </div>
                                                   </div>
+                                                  <br>
+                                                  <?php
+                                             }
+                                        } else {
+                                             ?>
+                                             <div class="mb-3">
+                                                  <p class="card-text text-body-secondary">
+                                                       Belum ada komentar! Tambahkan satu untuk
+                                                       memulai percakapan.
+                                                  </p>
                                              </div>
-                                             <br>
                                         <?php } ?>
                                    </div>
                                    <div class="row">

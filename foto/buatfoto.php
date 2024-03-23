@@ -32,10 +32,9 @@ if ($_SESSION['status'] != 'login') {
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                          <li class="nav-item">
-                              <a class="nav-link active" aria-current="page" href="album.php">Foto</a>
+                              <a class="nav-link active" aria-current="page" href="foto.php">Foto</a>
                          </li>
                     </ul>
-                    <a class="btn btn-primary" href="../logout.php" type="button">Keluar</a>
                </div>
           </div>
      </nav>
@@ -54,12 +53,12 @@ if ($_SESSION['status'] != 'login') {
           <div class="row">
                <section class="col-md-12">
                     <?php
-                    if (isset($_SESSION['Message'])): ?>
-                    <?php ?>
-                    <h5 class="alert alert-success">
-                         <?= $_SESSION['Message']; ?>
-                    </h5>
-                    <?php
+                    if (isset ($_SESSION['Message'])): ?>
+                         <?php ?>
+                         <h5 class="alert alert-success">
+                              <?= $_SESSION['Message']; ?>
+                         </h5>
+                         <?php
                          unset($_SESSION['Message']);
                     endif; ?>
                     <form action="../php/foto.php" method="post" enctype="multipart/form-data">
@@ -89,14 +88,14 @@ if ($_SESSION['status'] != 'login') {
                               if ($result) {
                                    foreach ($result as $data) {
                                         ?>
-                              <option value="<?= $data['albumid'] ?>">
-                                   <?= $data['namaalbum'] ?>
-                              </option>
-                              <?php
+                                        <option value="<?= $data['albumid'] ?>">
+                                             <?= $data['namaalbum'] ?>
+                                        </option>
+                                        <?php
                                    }
                               } else {
                                    ?>
-                              <option value="">No Album</option>
+                                   <option value="">No Album</option>
                               <?php }
                               ?>
                          </select>

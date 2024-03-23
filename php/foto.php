@@ -2,7 +2,7 @@
 session_start();
 include "../db_conn.php";
 // delete
-if (isset ($_POST['delete'])) {
+if (isset($_POST['delete'])) {
      $fotoid = $_POST['delete'];
      $query = "SELECT * FROM foto WHERE fotoid='$fotoid'";
      $statement = $conn->prepare($query);
@@ -26,13 +26,13 @@ if (isset ($_POST['delete'])) {
                if ($query_execute) {
                     $_SESSION['Message'] = "Delete Data Berhasil";
                     header('Location: ../foto/foto.php');
-                    exit (0);
+                    exit(0);
 
                } else {
                     $_SESSION['Message'] = "Delete Data Gagal";
                     header('Location: ../foto/foto.php');
 
-                    exit (0);
+                    exit(0);
                }
 
           } catch (PDOException $e) {
@@ -45,7 +45,7 @@ if (isset ($_POST['delete'])) {
 
 
 // Update
-if (isset ($_POST['update'])) {
+if (isset($_POST['update'])) {
      $fotoid = $_POST['fotoid'];
      $judulfoto = $_POST['judulfoto'];
      $deskripsifoto = $_POST['deskripsifoto'];
@@ -64,8 +64,7 @@ if (isset ($_POST['update'])) {
                     ':fotoid' => $fotoid,
                     ':judulfoto' => $judulfoto,
                     ':deskripsifoto' => $deskripsifoto,
-                    ':tanggalunggah' => $tanggalunggah,
-
+                    ':tanggalunggah' => $tanggalunggah
                ];
                $query_execute = $statement->execute($data);
 
@@ -77,7 +76,7 @@ if (isset ($_POST['update'])) {
                     $_SESSION['Message'] = "Update Data Gagal";
                     header('Location: ../foto/foto.php');
 
-                    exit (0);
+                    exit(0);
                }
 
           } catch (PDOException $e) {
@@ -117,7 +116,7 @@ if (isset ($_POST['update'])) {
                               $_SESSION['Message'] = "Update Data Gagal";
                               header('Location: ../foto/foto.php');
 
-                              exit (0);
+                              exit(0);
                          }
 
                     } catch (PDOException $e) {
@@ -134,7 +133,7 @@ if (isset ($_POST['update'])) {
 
 
 // simpan
-if (isset ($_POST['tambah'])) {
+if (isset($_POST['tambah'])) {
      $judulfoto = $_POST['judulfoto'];
      $deskripsifoto = $_POST['deskripsifoto'];
      $tanggalunggah = date('Y-m-d');
@@ -170,7 +169,7 @@ if (isset ($_POST['tambah'])) {
           $_SESSION['Message'] = "Input Data Gagal";
           header('Location: ../foto/foto.php');
 
-          exit (0);
+          exit(0);
      }
 }
 // end simpan

@@ -42,13 +42,24 @@
     columns: 3;
   }
 }
+@media (max-width: 1620px) {
+  .main {
+    padding: 15px;
+    max-width: 100%;
+    columns: 5;
+  }
+}
 @media (max-width: 768px) {
   .main {
     padding: 15px;
     max-width: 100%;
-    columns: 2;
+    columns: 3;
   }
-  .container .card .row img {
-    border-top-right-radius: 2rem;
+}
+@media (max-width: 568px) {
+  .main {
+    padding: 15px;
+    max-width: 100%;
+    columns: 2;
   }
 }

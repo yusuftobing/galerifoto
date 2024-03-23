@@ -66,15 +66,16 @@ $statement->execute(); ?>
 
                     <?php
                     if (isset ($_SESSION['Message'])): ?>
-                         <?php ?>
-                         <h5 class="alert alert-success">
-                              <?= $_SESSION['Message']; ?>
-                         </h5>
-                         <?php
+                    <?php ?>
+                    <h5 class="alert alert-success">
+                         <?= $_SESSION['Message']; ?>
+                    </h5>
+                    <?php
                          unset($_SESSION['Message']);
                     endif; ?>
                     <div class="table-responsive">
-                         <table class='table table-striped table-bordered table-hover' width='100%' cellspacing='0'>
+                         <table class='table table-striped table-bordered table-hover navbar-brand navbar-expand-md'
+                              width='100%' cellspacing='0'>
                               <thead>
 
                                    <tr>
@@ -97,59 +98,59 @@ $statement->execute(); ?>
                                    if ($result) {
                                         foreach ($result as $row) {
                                              ?>
-                                             <tr>
-                                                  <td>
-                                                       <center>
-                                                            <?= $row['fotoid']; ?>
-                                                       </center>
+                                   <tr>
+                                        <td>
+                                             <center>
+                                                  <?= $row['fotoid']; ?>
+                                             </center>
 
-                                                  </td>
-                                                  <td>
-                                                       <center>
-                                                            <img src="../Assets/img/<?= $row['lokasifile'] ?>" width="100">
-                                                       </center>
+                                        </td>
+                                        <td>
+                                             <center>
+                                                  <img src="../Assets/img/<?= $row['lokasifile'] ?>" width="100">
+                                             </center>
 
-                                                  </td>
-                                                  <td>
-                                                       <center>
-                                                            <?= $row['judulfoto']; ?>
-                                                       </center>
+                                        </td>
+                                        <td>
+                                             <center>
+                                                  <?= $row['judulfoto']; ?>
+                                             </center>
 
-                                                  </td>
-                                                  <td>
-                                                       <center>
-                                                            <?= $row['deskripsifoto']; ?>
-                                                       </center>
+                                        </td>
+                                        <td>
+                                             <center>
+                                                  <?= $row['deskripsifoto']; ?>
+                                             </center>
 
-                                                  </td>
-                                                  <td>
-                                                       <center>
-                                                            <?= $row['tanggalunggah']; ?>
-                                                       </center>
+                                        </td>
+                                        <td>
+                                             <center>
+                                                  <?= $row['tanggalunggah']; ?>
+                                             </center>
 
-                                                  </td>
+                                        </td>
 
-                                                  <td>
-                                                       <center>
-                                                            <form action="../php/foto.php" method="POST">
-                                                                 <a href="edit.php?id=<?= $row['fotoid']; ?> &JudulFoto=<?= $row['judulfoto']; ?>  &DeskripsiFoto=<?= $row['deskripsifoto']; ?>   &Fotoid=<?= $row['fotoid']; ?>  &LokasiFile=<?= $row['lokasifile']; ?>"
-                                                                      class="btn btn-primary">Edit</a>
+                                        <td>
+                                             <center>
+                                                  <form action="../php/foto.php" method="POST">
+                                                       <a href="edit.php?id=<?= $row['fotoid']; ?> &JudulFoto=<?= $row['judulfoto']; ?>  &DeskripsiFoto=<?= $row['deskripsifoto']; ?>   &Fotoid=<?= $row['fotoid']; ?>  &LokasiFile=<?= $row['lokasifile']; ?>"
+                                                            class="btn btn-primary">Edit</a>
 
-                                                                 <button type="submit" name="delete"
-                                                                      value="<?= $row['fotoid']; ?>"
-                                                                      class="btn btn-danger">Delete</button>
-                                                            </form>
-                                                       </center>
-                                                  </td>
-                                             </tr>
-                                             <?php
+                                                       <button type="submit" name="delete"
+                                                            value="<?= $row['fotoid']; ?>"
+                                                            class="btn btn-danger">Delete</button>
+                                                  </form>
+                                             </center>
+                                        </td>
+                                   </tr>
+                                   <?php
                                         }
                                    } else {
                                         ?>
-                                        <tr>
-                                             <td colspan="5">No Record Found</td>
-                                        </tr>
-                                        <?php
+                                   <tr>
+                                        <td colspan="5">No Record Found</td>
+                                   </tr>
+                                   <?php
                                    }
 
                                    ?>

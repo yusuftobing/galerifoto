@@ -10,58 +10,60 @@
 </head>
 
 <body>
-     <div class="d-flex justify-content-center align-items-center vh-100">
+     <div class="navbar ">
+          <div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+               <form class="shadow  p-3 login bg-tertiary" action="php/signup.php" method="post"
+                    enctype="multipart/form-data" style="width:400px;">
 
-          <form class="shadow w-450 p-3" action="php/signup.php" method="post" enctype="multipart/form-data">
+                    <h4 class="display-4  fs-1">Create Account</h4><br>
+                    <?php if (isset ($_GET['error'])) { ?>
+                         <div class="alert alert-danger" role="alert">
+                              <?php echo $_GET['error']; ?>
+                         </div>
+                    <?php } ?>
 
-               <h4 class="display-4  fs-1">Create Account</h4><br>
-               <?php if (isset ($_GET['error'])) { ?>
-                    <div class="alert alert-danger" role="alert">
-                         <?php echo $_GET['error']; ?>
+                    <?php if (isset ($_GET['success'])) { ?>
+                         <div class="alert alert-success" role="alert">
+                              <?php echo $_GET['success']; ?>
+                         </div>
+                    <?php } ?>
+
+                    <div class="mb-3">
+                         <label class="form-label">Full Name</label>
+                         <input type="text" class="form-control" name="nlengkap"
+                              value="<?php echo (isset ($_GET['nlengkap'])) ? $_GET['nlengkap'] : "" ?>">
                     </div>
-               <?php } ?>
 
-               <?php if (isset ($_GET['success'])) { ?>
-                    <div class="alert alert-success" role="alert">
-                         <?php echo $_GET['success']; ?>
+                    <div class="mb-3">
+                         <label class="form-label">User name</label>
+                         <input type="text" class="form-control" name="uname"
+                              value="<?php echo (isset ($_GET['uname'])) ? $_GET['uname'] : "" ?>">
                     </div>
-               <?php } ?>
+                    <div class="mb-3">
+                         <label class="form-label">Alamat</label>
+                         <input type="text" class="form-control" name="alamat"
+                              value="<?php echo (isset ($_GET['alamat'])) ? $_GET['alamat'] : "" ?>">
+                    </div>
+                    <div class="mb-3">
+                         <label class="form-label">Email</label>
+                         <input type="text" class="form-control" name="email"
+                              value="<?php echo (isset ($_GET['email'])) ? $_GET['email'] : "" ?>">
+                    </div>
 
-               <div class="mb-3">
-                    <label class="form-label">Full Name</label>
-                    <input type="text" class="form-control" name="nlengkap" style="width:400px;"
-                         value="<?php echo (isset ($_GET['nlengkap'])) ? $_GET['nlengkap'] : "" ?>">
-               </div>
+                    <div class="mb-3">
+                         <label class="form-label">Password</label>
+                         <input type="password" class="form-control" name="pass">
+                    </div>
 
-               <div class="mb-3">
-                    <label class="form-label">User name</label>
-                    <input type="text" class="form-control" name="uname"
-                         value="<?php echo (isset ($_GET['uname'])) ? $_GET['uname'] : "" ?>">
-               </div>
-               <div class="mb-3">
-                    <label class="form-label">Alamat</label>
-                    <input type="text" class="form-control" name="alamat"
-                         value="<?php echo (isset ($_GET['alamat'])) ? $_GET['alamat'] : "" ?>">
-               </div>
-               <div class="mb-3">
-                    <label class="form-label">Email</label>
-                    <input type="text" class="form-control" name="email"
-                         value="<?php echo (isset ($_GET['email'])) ? $_GET['email'] : "" ?>">
-               </div>
+                    <div class="mb-3">
+                         <label class="form-label">Foto :</label>
+                         <input type="file" class="form-control" name="image" required>
+                    </div>
 
-               <div class="mb-3">
-                    <label class="form-label">Password</label>
-                    <input type="password" class="form-control" name="pass">
-               </div>
-
-               <div class="mb-3">
-                    <label class="form-label">Foto :</label>
-                    <input type="file" class="form-control" name="image" required>
-               </div>
-
-               <button type="submit" class="btn btn-primary" name="tambah">Sign Up</button>
-               <a href="login.php" class="link-secondary">Login</a>
-          </form>
+                    <button type="submit" class="btn btn-primary" name="tambah">Sign Up</button>
+                    <a href="login.php" class="link-secondary">Login</a>
+               </form>
+          </div>
      </div>
      <script src="Assets/js/bootstrap.bundle.min.js"></script>
 </body>

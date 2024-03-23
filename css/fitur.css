@@ -1,7 +1,7 @@
-.navbar .fitur .collapse a {
+.navbar .fitur .collapse .satu .dua a {
   position: relative;
 }
-.navbar .fitur .collapse a:after {
+.navbar .fitur .collapse .satu .dua a:after {
   content: "";
   position: absolute;
   background-color: #0088ff;
@@ -11,9 +11,23 @@
   bottom: -1px;
   transition: 0.3s;
 }
-.navbar .fitur .collapse a:hover {
+.navbar .fitur .collapse .satu .dua a:hover {
   color: #0088ff;
 }
-.navbar .fitur .collapse a:hover:after {
+.navbar .fitur .collapse .satu .dua a:hover:after {
   width: 100%;
+}
+
+.navbar .fitur .collapse .tiga a:after {
+  content: "";
+  position: absolute;
+  background-color: #0088ff;
+  height: 4px;
+  width: 0;
+  left: 0;
+  bottom: -1px;
+  transition: 0.3s;
+}
+.navbar .fitur .collapse .tiga a:hover {
+  color: #0088ff;
 }

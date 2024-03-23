@@ -14,6 +14,7 @@ if (isset ($_GET['t'], $_GET['fotoid']) and !empty ($_GET['t']) and !empty ($_GE
      $check = $conn->prepare('SELECT fotoid FROM foto WHERE fotoid = ? ');
      $check->execute(array($getid));
 
+
      if ($check->rowCount() == 1) {
           if ($gett == 1) {
                $check_like = $conn->prepare('SELECT likeid FROM likefoto WHERE fotoid = ? AND id_member = ? AND userid = ?');
