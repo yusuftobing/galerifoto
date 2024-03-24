@@ -54,12 +54,12 @@ if ($_SESSION['status'] != 'login') {
           <div class="row">
                <section class="col-md-12">
                     <?php
-                    if (isset ($_SESSION['Message'])): ?>
-                         <?php ?>
-                         <h5 class="alert alert-success">
-                              <?= $_SESSION['Message']; ?>
-                         </h5>
-                         <?php
+                    if (isset($_SESSION['Message'])): ?>
+                    <?php ?>
+                    <h5 class="alert alert-success">
+                         <?= $_SESSION['Message']; ?>
+                    </h5>
+                    <?php
                          unset($_SESSION['Message']);
                     endif; ?>
 

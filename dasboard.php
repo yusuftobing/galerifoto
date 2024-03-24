@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'db_conn.php';
-if (isset ($_SESSION['status']) != 'login') {
+if (isset($_SESSION['status']) != 'login') {
      echo "<script> alert('Anda Belum Login') 
      location.href='index.php';  
      </script>";
@@ -76,45 +76,45 @@ if (isset ($_SESSION['status']) != 'login') {
           $users = $album->fetchAll();
           foreach ($users as $row) {
                ?>
-          <div class=" ms-5">
+               <div class=" ms-5">
 
-               <a href="dasboard.php?albumid=<?= $row['albumid'] ?>"> <i class="bi bi-folder-fill"
-                         style="font-size:30px;"></i>
-               </a>
-               <br>
-               <?= $row['namaalbum']; ?>
-          </div>
+                    <a href="dasboard.php?albumid=<?= $row['albumid'] ?>"> <i class="bi bi-folder-fill"
+                              style="font-size:30px;"></i>
+                    </a>
+                    <br>
+                    <?= $row['namaalbum']; ?>
+               </div>
           <?php } ?>
      </div>
      <div class="main" style="margin-top:20px;">
           <div class="gallery">
                <?php
-               if (isset ($_GET['albumid'])) {
+               if (isset($_GET['albumid'])) {
                     $albumid = $_GET['albumid'];
                     $stmt = $conn->prepare("SELECT * FROM foto INNER JOIN user ON foto.userid = user.userid WHERE user.userid='$userid' AND foto.albumid='$albumid'  ORDER BY foto.userid ASC");
                     $stmt->execute();
                     $users = $stmt->fetchAll();
                     foreach ($users as $row) {
                          ?>
-               <div class="img">
-                    <a href="tampilberanda.php?fotoid=<?= $row['fotoid']; ?>&image=<?= $row['image']; ?>">
-                         <img src="Assets/img/<?= $row['lokasifile']; ?>" title="<?= $row['judulfoto']; ?>"
-                              style="width:300px">
-                    </a>
-                    <div class="yee">
-                         <a href="tampilberanda.php?fotoid=<?= $row['fotoid']; ?>&image=<?= $row['image']; ?>">
-                              <?= $row['judulfoto']; ?>
-                         </a>
-                         <div class="username">
-                              <a href="tampilberanda.php?fotoid=<?= $row['fotoid']; ?>&image=<?= $row['image']; ?>">
-                                   <img src="image_profil/<?= $row['image']; ?>" class=" rounded-circle"
-                                        style="width:30px;">
-                                   <?= $row['username']; ?>
+                         <div class="img">
+                              <a href="tampilberanda.php?fotoid=<?= $row['fotoid']; ?>">
+                                   <img src="Assets/img/<?= $row['lokasifile']; ?>" title="<?= $row['judulfoto']; ?>"
+                                        style="width:300px">
                               </a>
+                              <div class="yee">
+                                   <a href="tampilberanda.php?fotoid=<?= $row['fotoid']; ?>">
+                                        <?= $row['judulfoto']; ?>
+                                   </a>
+                                   <div class="username">
+                                        <a href="tampilberanda.php?fotoid=<?= $row['fotoid']; ?>">
+                                             <img src="image_profil/<?= $row['image']; ?>" class=" rounded-circle"
+                                                  style="width:30px;">
+                                             <?= $row['username']; ?>
+                                        </a>
+                                   </div>
+                              </div>
                          </div>
-                    </div>
-               </div>
-               <?php }
+                    <?php }
                } else {
                     $userid = $_SESSION['userid'];
                     $stmt = $conn->prepare("SELECT * FROM foto INNER JOIN user ON foto.userid = user.userid WHERE user.userid='$userid'  ORDER BY foto.userid ASC");
@@ -122,27 +122,27 @@ if (isset ($_SESSION['status']) != 'login') {
                     $users = $stmt->fetchAll();
                     foreach ($users as $row) {
                          ?>
-               <div class="img">
-                    <a href="tampilberanda.php?fotoid=<?= $row['fotoid']; ?>&image=<?= $row['image']; ?>">
-                         <img src="Assets/img/<?= $row['lokasifile']; ?>" title="<?= $row['judulfoto']; ?>"
-                              style="width:300px">
-                    </a>
-                    <div class="yee">
-                         <a href="tampilberanda.php?fotoid=<?= $row['fotoid']; ?>&image=<?= $row['image']; ?>">
-                              <?= $row['judulfoto']; ?>
-                         </a>
-                         <div class="username">
+                         <div class="img">
                               <a href="tampilberanda.php?fotoid=<?= $row['fotoid']; ?>&image=<?= $row['image']; ?>">
-                                   <img src="image_profil/<?= $row['image']; ?>" class=" rounded-circle"
-                                        style="width:30px;">
-                                   <?= $row['username']; ?>
+                                   <img src="Assets/img/<?= $row['lokasifile']; ?>" title="<?= $row['judulfoto']; ?>"
+                                        style="width:300px">
                               </a>
+                              <div class="yee">
+                                   <a href="tampilberanda.php?fotoid=<?= $row['fotoid']; ?>&image=<?= $row['image']; ?>">
+                                        <?= $row['judulfoto']; ?>
+                                   </a>
+                                   <div class="username">
+                                        <a href="tampilberanda.php?fotoid=<?= $row['fotoid']; ?>&image=<?= $row['image']; ?>">
+                                             <img src="image_profil/<?= $row['image']; ?>" class=" rounded-circle"
+                                                  style="width:30px;">
+                                             <?= $row['username']; ?>
+                                        </a>
+                                   </div>
+                              </div>
                          </div>
-                    </div>
-               </div>
 
 
-               <?php }
+                    <?php }
                } ?>
           </div>
      </div>
